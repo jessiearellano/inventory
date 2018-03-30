@@ -1,0 +1,28 @@
+entity Sku {
+	skuId String required,
+	name String,
+	uom String,
+	unitsPerUom Integer,
+	category String,
+	cost Double,
+	tags String
+}
+
+entity Store {
+	storeId String required,
+	name String,
+	phoneNumber String,
+	storeNumber String
+}
+
+entity StoreSku {
+	quantity Integer
+}
+
+relationship ManyToOne {
+	StoreSku{store(name)} to Store{item}
+}
+
+relationship ManyToOne {
+	StoreSku{sku(name)} to Sku{item}
+}

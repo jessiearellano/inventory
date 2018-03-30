@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "item",
+            "otherEntityName": "storeSku",
+            "otherEntityRelationshipName": "sku"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "skuId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "uom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unitsPerUom",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cost",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "tags",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180329223412",
+    "entityTableName": "sku",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

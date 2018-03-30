@@ -1,0 +1,24 @@
+
+{
+    "inventoryApp": {
+        "storeSku" : {
+            "home": {
+                "title": "Store Skus",
+                "createLabel": "Create a new Store Sku",
+                "createOrEditLabel": "Create or edit a Store Sku"
+            },
+            "created": "A new Store Sku is created with identifier {{ param }}",
+            "updated": "A Store Sku is updated with identifier {{ param }}",
+            "deleted": "A Store Sku is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Store Sku {{ id }}?"
+            },
+            "detail": {
+                "title": "Store Sku"
+            },
+            "quantity": "Quantity",
+            "store": "Store",
+            "sku": "Sku"
+        }
+    }
+}

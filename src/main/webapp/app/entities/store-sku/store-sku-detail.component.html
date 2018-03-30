@@ -1,0 +1,38 @@
+
+<div *ngIf="storeSku">
+    <h2><span jhiTranslate="inventoryApp.storeSku.detail.title">Store Sku</span> {{storeSku.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="inventoryApp.storeSku.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{storeSku.quantity}}</span>
+        </dd>
+        <dt><span jhiTranslate="inventoryApp.storeSku.store">Store</span></dt>
+        <dd>
+            <div *ngIf="storeSku.store">
+                <a [routerLink]="['/store', storeSku.store?.id]">{{storeSku.store?.name}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="inventoryApp.storeSku.sku">Sku</span></dt>
+        <dd>
+            <div *ngIf="storeSku.sku">
+                <a [routerLink]="['/sku', storeSku.sku?.id]">{{storeSku.sku?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'store-sku/'+ storeSku.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
