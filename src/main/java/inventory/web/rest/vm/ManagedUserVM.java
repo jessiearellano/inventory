@@ -27,6 +27,12 @@ public class ManagedUserVM extends UserDTO {
         this.password = password;
     }
 
+    private String storename;
+    public String getStorename() {
+        return storename;
+    }
+    public void setStorename(String storename) { this.storename = storename; }
+
     @Override
     public String toString() {
         return "ManagedUserVM{" +

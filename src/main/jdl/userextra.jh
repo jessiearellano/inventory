@@ -1,0 +1,7 @@
+entity UserExtra {
+    storename String
+}
+
+relationship OneToOne {
+    UserExtra{user} to User
+}

@@ -1,0 +1,25 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userExtra"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "storename",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180414200430",
+    "entityTableName": "user_extra",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

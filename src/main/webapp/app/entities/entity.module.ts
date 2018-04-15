@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { InventorySkuModule } from './sku/sku.module';
 import { InventoryStoreModule } from './store/store.module';
 import { InventoryStoreSkuModule } from './store-sku/store-sku.module';
+import { InventoryUserExtraModule } from './user-extra/user-extra.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -10,6 +11,7 @@ import { InventoryStoreSkuModule } from './store-sku/store-sku.module';
         InventorySkuModule,
         InventoryStoreModule,
         InventoryStoreSkuModule,
+        InventoryUserExtraModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

@@ -2,14 +2,17 @@ package inventory.service;
 
 import inventory.domain.Authority;
 import inventory.domain.User;
+import inventory.domain.UserExtra;
 import inventory.repository.AuthorityRepository;
 import inventory.config.Constants;
+import inventory.repository.UserExtraRepository;
 import inventory.repository.UserRepository;
 import inventory.security.AuthoritiesConstants;
 import inventory.security.SecurityUtils;
 import inventory.service.util.RandomUtil;
 import inventory.service.dto.UserDTO;
 
+import inventory.web.rest.vm.ManagedUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -35,12 +38,14 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private UserExtraRepository userExtraRepository;
     private final PasswordEncoder passwordEncoder;
 
     private final AuthorityRepository authorityRepository;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository) {
+    public UserService(UserRepository userRepository, UserExtraRepository userExtraRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
+        this.userExtraRepository = userExtraRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
     }
@@ -80,7 +85,7 @@ public class UserService {
             });
     }
 
-    public User registerUser(UserDTO userDTO, String password) {
+    public User registerUser(ManagedUserVM userDTO, String password) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -100,7 +105,14 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
-        userRepository.save(newUser);
+
+        User savedUser = userRepository.save(newUser);
+
+        UserExtra ue = new UserExtra();
+        ue.setUser(savedUser);
+        ue.setStorename(userDTO.getStorename());
+        userExtraRepository.save(ue);
+
         log.debug("Created Information for User: {}", newUser);
         return newUser;
     }
